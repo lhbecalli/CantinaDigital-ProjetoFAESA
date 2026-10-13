@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Cantina Digital FAESA - Projeto Integrador</title>
+<style>
+  @page { size: 1280px 720px; margin: 0; }
+  :root { --azul:#0b3a7a; --azul2:#1d5fc4; --laranja:#f28c1b; --cinza:#5b6472; --bg:#f4f7fb; --ok:#1f9d55; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:"Segoe UI",Arial,sans-serif; color:#16202e; background:#888; }
+  .slide { width:1280px; height:720px; background:#fff; position:relative; overflow:hidden; page-break-after:always; break-after:page; padding:64px 80px; }
+  .slide:last-child { page-break-after:auto; break-after:auto; }
+  .bar { position:absolute; left:0; top:0; width:100%; height:10px; background:linear-gradient(90deg,var(--azul),var(--azul2)); }
+  .foot { position:absolute; left:80px; right:80px; bottom:24px; display:flex; justify-content:space-between; font-size:14px; color:var(--cinza); }
+  .logo { position:absolute; right:80px; top:34px; height:44px; }
+  h1 { font-size:46px; color:var(--azul); margin-bottom:8px; }
+  h2 { font-size:40px; color:var(--azul); margin-bottom:6px; }
+  .sub { font-size:20px; color:var(--cinza); margin-bottom:28px; }
+  .tag { display:inline-block; background:var(--laranja); color:#fff; font-weight:600; font-size:15px; padding:4px 12px; border-radius:20px; margin-bottom:14px; letter-spacing:.5px; }
+  ul { list-style:none; }
+  li { font-size:23px; line-height:1.35; margin-bottom:14px; padding-left:28px; position:relative; }
+  li::before { content:""; position:absolute; left:0; top:12px; width:10px; height:10px; border-radius:50%; background:var(--laranja); }
+  .cols { display:flex; gap:28px; }
+  .card { flex:1; background:var(--bg); border-radius:14px; padding:24px 26px; border-top:6px solid var(--azul2); }
+  .card h3 { font-size:24px; color:var(--azul); margin-bottom:12px; }
+  .card li { font-size:19px; margin-bottom:9px; padding-left:22px; }
+  .card li::before { width:8px; height:8px; top:9px; }
+  /* capa */
+  .capa { background:linear-gradient(135deg,var(--azul),var(--azul2)); color:#fff; padding:90px 90px; }
+  .capa h1 { color:#fff; font-size:72px; margin:18px 0 10px; }
+  .capa .sub { color:#d6e4ff; font-size:26px; }
+  .capa .meta { position:absolute; left:90px; bottom:70px; font-size:21px; line-height:1.6; }
+  .capa .logo { background:#fff; padding:8px 14px; border-radius:8px; height:58px; top:60px; right:90px; }
+  /* arquitetura */
+  .arq { display:flex; align-items:center; gap:14px; margin-top:20px; }
+  .box { flex:1; border-radius:14px; padding:20px 14px; text-align:center; color:#fff; min-height:150px; display:flex; flex-direction:column; justify-content:center; }
+  .box b { font-size:23px; } .box span { font-size:15px; opacity:.92; margin-top:8px; }
+  .arrow { font-size:34px; color:var(--cinza); }
+  .b1{background:#1d5fc4}.b2{background:#0b3a7a}.b3{background:#2f7d6b}.b4{background:#7a4cc2}
+  .n8n { margin-top:26px; background:#fff4e5; border:2px dashed var(--laranja); border-radius:14px; padding:16px 22px; font-size:19px; }
+  /* mockups */
+  .mock { display:flex; gap:30px; margin-top:6px; }
+  .phone { width:310px; height:470px; border:8px solid #16202e; border-radius:30px; background:#fff; overflow:hidden; display:flex; flex-direction:column; }
+  .phone .top { background:var(--azul); color:#fff; padding:12px 16px; font-weight:600; font-size:16px; }
+  .msg { margin:8px 12px; padding:8px 12px; border-radius:12px; font-size:13.5px; max-width:84%; line-height:1.3; }
+  .u { background:var(--azul2); color:#fff; align-self:flex-end; } .a { background:#e8edf5; }
+  .cart { margin:auto 12px 12px; background:#fff4e5; border:1px solid var(--laranja); border-radius:10px; padding:8px 10px; font-size:13px; }
+  .desk { flex:1; height:470px; border:8px solid #16202e; border-radius:14px; background:#fff; overflow:hidden; }
+  .desk .top { background:var(--azul); color:#fff; padding:10px 16px; font-weight:600; font-size:16px; }
+  .ped { display:flex; justify-content:space-between; align-items:center; margin:10px 14px; padding:10px 14px; border-radius:10px; background:var(--bg); font-size:15px; }
+  .st { font-size:12px; font-weight:700; color:#fff; padding:4px 10px; border-radius:12px; }
+  .s1{background:#c98100}.s2{background:var(--azul2)}.s3{background:var(--ok)}
+  .slide.proto { padding:36px 80px 24px; }
+  .proto h2 { font-size:36px; margin-bottom:12px; }
+  .stagebg { height:500px; border-radius:20px; background:radial-gradient(ellipse at 50% 40%,#dbe7fb,#c3d4f1 60%,#b3c7ea); display:flex; justify-content:center; align-items:center; gap:56px; }
+  .fig { margin:0; display:flex; flex-direction:column; align-items:center; gap:14px; }
+  .slot { height:430px; display:flex; align-items:center; justify-content:center; }
+  .shot { width:auto; flex:none; filter:drop-shadow(0 26px 30px rgba(10,30,80,.42)) drop-shadow(0 6px 8px rgba(10,30,80,.22)); }
+  .cap { font-size:15px; color:#0b2a6b; background:#ffffffd9; padding:6px 16px; border-radius:16px; }
+  .aviso { font-size:14px; color:var(--cinza); margin-top:10px; font-style:italic; }
+  /* timeline */
+  .fases { display:flex; gap:20px; margin-top:6px; }
+  .fase { flex:1; border-radius:14px; padding:20px 22px; background:var(--bg); }
+  .fase h3 { font-size:22px; margin-bottom:10px; }
+  .fase li { font-size:18px; margin-bottom:8px; }
+  .fase.ok { border-top:6px solid var(--ok); } .fase.ok h3 { color:var(--ok); }
+  .fase.and { border-top:6px solid var(--laranja); } .fase.and h3 { color:#c06a00; }
+  .fase.prox { border-top:6px solid var(--cinza); } .fase.prox h3 { color:var(--cinza); }
+  .pessoa { flex:1; background:var(--bg); border-radius:14px; padding:26px; }
+  .pessoa h3 { font-size:25px; color:var(--azul); margin-bottom:4px; } .pessoa .papel { color:var(--laranja); font-weight:700; margin-bottom:14px; font-size:18px; }
+  .big { font-size:28px; color:var(--azul); font-weight:600; line-height:1.4; }
+</style>
+</head>
+<body>
+
+<!-- 1 CAPA -->
+<section class="slide capa">
+  <img class="logo" src="img/logo-faesa.png" alt="FAESA" onerror="this.style.display='none'">
+  <span class="tag">PROJETO INTEGRADOR</span>
+  <h1>Cantina Digital FAESA</h1>
+  <p class="sub">Pedido antecipado com agente de inteligência artificial<br>e pagamento por ticket no balcão</p>
+  <div class="meta">
+    <b>Alunos:</b> Luiz Henrique Dominicini Becalli · Atilla Tayller Gama da Rocha<br>
+    Sistemas de Informação · 4º período · Turma 4SC1<br>
+    Prof. Leonardo Lopes · Apresentação C2 · 13/10/2026
+  </div>
+</section>
+
+<!-- 2 PROBLEMA -->
+<section class="slide">
+  <div class="bar"></div><img class="logo" src="img/logo-faesa.png" alt="" onerror="this.style.display='none'">
+  <span class="tag">O PROBLEMA</span>
+  <h2>O intervalo é curto, e a fila da cantina é grande</h2>
+  <p class="sub">Situações comuns que acontecem</p>
+  <ul>
+    <li>Enfrentar a fila e, ao chegar ao balcão, descobrir que o produto desejado não está disponível</li>
+    <li>Fila no horário do intervalo, que faz o aluno perder boa parte do tempo livre</li>
+    <li>Dúvidas simples (alergias, restrições, opções) que dependem de perguntar a um atendente</li>
+  </ul>
+</section>
+
+<!-- 3 SOLUCAO -->
+<section class="slide">
+  <div class="bar"></div><img class="logo" src="img/logo-faesa.png" alt="" onerror="this.style.display='none'">
+  <span class="tag">A SOLUÇÃO</span>
+  <h2>Cantina Digital: agilidade e otimização de tempo</h2>
+  <p class="sub">Aplicação web responsiva, usada no celular ou no computador</p>
+  <div class="cols">
+    <div class="card"><h3>1. Pede</h3><ul><li>Vê o cardápio do dia</li><li>Monta o pedido manualmente <b>ou conversando com o agente de IA</b></li></ul></div>
+    <div class="card"><h3>2. Gera o ticket</h3><ul><li>Pedido confirmado no app gera ticket com número e QR</li><li>Pagamento na maquininha, no balcão</li></ul></div>
+    <div class="card"><h3>3. Retira</h3><ul><li>Acompanha o status em tempo real</li><li>Recebe notificação quando o pedido estiver pronto</li></ul></div>
+  </div>
+  <p class="aviso" style="margin-top:26px">Diferencial do projeto: o agente de IA atende o aluno por conversa e já monta o carrinho.</p>
+</section>
+
+<!-- 4 FUNCIONALIDADES -->
+<section class="slide">
+  <div class="bar"></div><img class="logo" src="img/logo-faesa.png" alt="" onerror="this.style.display='none'">
+  <span class="tag">FUNCIONALIDADES</span>
+  <h2>O que o sistema vai fazer</h2>
+  <p class="sub">Três perfis de uso</p>
+  <div class="cols">
+    <div class="card"><h3>Aluno</h3><ul><li>Visualizar o cardápio do dia</li><li>Pedir pelo fluxo tradicional ou por chat</li><li>Gerar o ticket e pagar no balcão</li><li>Consultar o status do pedido</li><li>Ser notificado quando estiver pronto</li></ul></div>
+    <div class="card"><h3>Equipe da cantina</h3><ul><li>Painel web com pedidos em tempo real</li><li>Confirmar o pagamento feito no balcão</li><li>Atualizar status: em preparo, pronto, retirado</li><li>Gerenciar cardápio</li><li>Receber relatórios periódicos de vendas</li></ul></div>
+    <div class="card" style="border-top-color:var(--laranja)"><h3>Agente de IA</h3><ul><li>Responde dúvidas sobre o cardápio (ex.: "o que tem sem açúcar hoje?")</li><li>Monta o pedido inteiro por conversa</li><li>Informa o status do pedido</li><li>Sugere combos com base em pedidos anteriores</li></ul></div>
+  </div>
+</section>
+
+<!-- 5 ARQUITETURA -->
+<section class="slide">
+  <div class="bar"></div><img class="logo" src="img/logo-faesa.png" alt="" onerror="this.style.display='none'">
+  <span class="tag">ARQUITETURA</span>
+  <h2>Sistema em camadas</h2>
+  <p class="sub">Cada camada tem uma responsabilidade clara</p>
+  <div class="arq">
+    <div class="box b1"><b>Frontend</b><span>React + TailwindCSS<br>interface do aluno e painel da cantina</span></div>
+    <div class="arrow">⇄</div>
+    <div class="box b2"><b>Backend</b><span>FastAPI (Python)<br>regras de negócio e API REST</span></div>
+    <div class="arrow">⇄</div>
+    <div class="box b3"><b>Banco de dados</b><span>PostgreSQL<br>cardápio, pedidos, usuários</span></div>
+    <div class="arrow">⇄</div>
+    <div class="box b4"><b>API do LLM</b><span>agente de IA<br>function calling</span></div>
+  </div>
+  <div class="n8n"><b>Camada complementar: n8n.</b> Automações fora do núcleo do sistema, como a notificação de "pedido pronto" e os relatórios periódicos de vendas para a cantina.</div>
+</section>
+
+<!-- 6 TECNOLOGIAS -->
+<section class="slide">
+  <div class="bar"></div><img class="logo" src="img/logo-faesa.png" alt="" onerror="this.style.display='none'">
+  <span class="tag">TECNOLOGIAS</span>
+  <h2>Por que escolhemos cada uma</h2>
+  <p class="sub">Decisões tomadas nas reuniões de 30/08 e 01/09 e na etapa atual</p>
+  <ul>
+    <li><b>React + TailwindCSS</b>: substituiu o React Native. Aplicação web responsiva evita a complexidade de publicar em loja de apps.</li>
+    <li><b>FastAPI</b>: escolhido pela compatibilidade com <i>function calling</i>, que permite ao agente de IA executar ações reais no sistema.</li>
+    <li><b>PostgreSQL</b>: mantido do projeto original, um banco relacional robusto para pedidos e cardápio.</li>
+    <li><b>API de LLM</b>: motor do agente conversacional que entende o pedido e chama as funções do backend.</li>
+    <li><b>Pagamento</b>: sem gateway integrado. O aluno gera um ticket no app e paga na maquininha, no balcão; a cantina confirma no painel.</li>
+    <li><b>n8n</b>: automações de notificação e relatórios sem sobrecarregar o núcleo do sistema.</li>
+  </ul>
+</section>
+
+<!-- 7 PROTOTIPO -->
+<section class="slide proto">
+  <div class="bar"></div><img class="logo" src="img/logo-faesa.png" alt="" onerror="this.style.display='none'">
+  <span class="tag">PROTÓTIPO INTERATIVO</span>
+  <h2>Do pedido ao balcão, em um só fluxo</h2>
+  <div class="stagebg">
+    <figure class="fig"><div class="slot"><img class="shot" style="height:428px" src="img/slide-app.png" alt="App do aluno com o assistente de IA"></div><figcaption class="cap"><b>Aluno</b> pede pelo chat com IA</figcaption></figure>
+    <figure class="fig"><div class="slot"><img class="shot" style="height:376px" src="img/slide-painel.png" alt="Painel da cantina com pedidos"></div><figcaption class="cap"><b>Cantina</b> confirma o pagamento e avança o status</figcaption></figure>
+  </div>
+  <p class="aviso">Protótipo em HTML com dados fictícios.</p>
+</section>
+
+<!-- 8 ANDAMENTO -->
+<section class="slide">
+  <div class="bar"></div><img class="logo" src="img/logo-faesa.png" alt="" onerror="this.style.display='none'">
+  <span class="tag">ANDAMENTO</span>
+  <h2>Em que ponto estamos</h2>
+  <p class="sub">Planejamento e protótipo concluídos; desenvolvimento começa agora</p>
+  <div class="fases">
+    <div class="fase ok"><h3>✔ Concluído</h3><ul><li>Escopo, funções e stack</li><li>Arquitetura em camadas</li><li>Agente de IA como núcleo</li><li>Pagamento no balcão (sem gateway)</li><li>Protótipo interativo em HTML</li><li>Identidade visual FAESA</li></ul></div>
+    <div class="fase and"><h3>● Em andamento</h3><ul><li>Modelagem do banco de dados</li></ul></div>
+    <div class="fase prox"><h3>○ Próximos passos</h3><ul><li>API em FastAPI (cardápio e pedidos)</li><li>Telas em React + Tailwind</li><li>Integração do agente de IA</li><li>Notificações e automações (n8n)</li><li>Testes e ajustes</li></ul></div>
+  </div>
+</section>
+
+<!-- 9 DIVISAO + ENCERRAMENTO -->
+<section class="slide">
+  <div class="bar"></div><img class="logo" src="img/logo-faesa.png" alt="" onerror="this.style.display='none'">
+  <span class="tag">EQUIPE</span>
+  <h2>Divisão de trabalho</h2>
+  <div class="cols" style="margin-top:22px">
+    <div class="pessoa"><h3>Luiz Henrique Dominicini Becalli</h3><div class="papel">Direção do produto e da tecnologia</div><ul><li style="font-size:19px">Direcionamento do escopo e das tecnologias</li><li style="font-size:19px">Telas em React + Tailwind</li><li style="font-size:19px">Agente de IA e automações (n8n)</li></ul></div>
+    <div class="pessoa"><h3>Atilla Tayller Gama da Rocha</h3><div class="papel">Direção do produto e da tecnologia</div><ul><li style="font-size:19px">Escopo e decisões de produto</li><li style="font-size:19px">Modelagem do banco de dados</li><li style="font-size:19px">API em FastAPI</li></ul></div>
+  </div>
+  <p class="big" style="margin-top:34px">Obrigado! Perguntas?</p>
+</section>
+
+</body>
+</html>
