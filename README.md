@@ -55,4 +55,28 @@ Observações:
 - Para ver o fluxo completo: peça pelo assistente, gere o ticket, mude para a visão "Cantina" e avance o pedido até "Pronto".
 
 ## Estrutura do repositório
+├── prototipo.html                    Protótipo interativo
+├── slides.html                       Fonte dos slides
+├── Slides_Cantina_Digital.pdf        Apresentação da etapa C2
+├── relatorio/                        Relatório de participação dos membros (DOCX e PDF)
+└── img/                              Imagens do protótipo e dos slides
 
+
+
+## Cronograma
+
+| Etapa | Período |
+| --- | --- |
+| Escopo, tecnologias e arquitetura | fim de agosto e início de setembro |
+| Protótipo interativo, slides e apresentação C2 | outubro |
+| Modelagem do banco de dados e API em FastAPI | outubro a novembro |
+| Telas em React e TailwindCSS | novembro |
+| Integração do agente de IA e automações (n8n) | novembro |
+| Testes, relatório final e apresentação | final de novembro e início de dezembro |
+
+## Equipe
+
+- **Atilla Tayller Gama da Rocha:** direção do produto e da tecnologia; modelagem do banco de dados e API em FastAPI.
+- **Luiz Henrique Dominicini Becalli:** direção do produto e da tecnologia; telas em React e TailwindCSS, agente de IA e automações (n8n).
+
+Orientação: prof. Leonardo Lopes (disciplina Projeto Integrador).
