@@ -55,11 +55,15 @@ Observações:
 - Para ver o fluxo completo: peça pelo assistente, gere o ticket, mude para a visão "Cantina" e avance o pedido até "Pronto".
 
 ## Estrutura do repositório
-├── prototipo.html                    Protótipo interativo
-├── slides.html                       Fonte dos slides
-├── Slides_Cantina_Digital.pdf        Apresentação da etapa C2
-├── relatorio/                        Relatório de participação dos membros (DOCX e PDF)
-└── img/                              Imagens do protótipo e dos slides
+
+```text
+├── prototipo.html                  Protótipo interativo
+├── slides.html                     Fonte dos slides
+├── Slides_Cantina_Digital.pdf      Apresentação da etapa C2
+├── relatorio/                      Relatório de participação dos membros (DOCX e PDF)
+└── img/                            Imagens do protótipo e dos slides
+```
+
 
 
 
